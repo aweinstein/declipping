@@ -95,6 +95,6 @@ title('Iterative method')
 
 save_results = false;
 if save_results,
-    file_name = ['mat_files/' mfilename '_' datestr(now,30)];
+    file_name = [mfilename '_' datestr(now,30)];
     save(file_name, '-V7')
 end

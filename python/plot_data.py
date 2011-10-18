@@ -126,33 +126,6 @@ def experiment_1(file_name, args):
         footnote(file_name)
     plt.gcf().subplots_adjust(bottom=bottom_margin)
 
-    # Plot cl_min/max versus K
-    ## style = [s_d, s_d, s_d, s_u, s_d, s_u, s_u, s_u, s_d ]
-    ## d =     [-1,   -1,   -1,  1,  -1,   1,   1,   1,   -1]
-    ## figs.append(plt.figure())
-    ## ax = plt.subplot(111)
-    ## k = 1
-    ## for i in range(len(methods)):
-    ##     if methods[i][0] not in plot_methods:
-    ##         continue
-    ##     x = Cls[:,i] / maxs.T
-    ##     x = x.flatten()
-    ##     p = plt.plot(K, x, markers[i] + '-',
-    ##                  markersize=9,
-    ##                  linewidth=2,
-    ##                  color = grey_colors[i])
-    ##     m = method_name[methods[i][0]]
-    ##     ax.annotate(m, xy=(k+2, x[k+1]),  xycoords='data',
-    ##                 xytext=(-40, d[i]*30), textcoords='offset points',
-    ##                 arrowprops=dict(arrowstyle="->",
-    ##                                 connectionstyle=style[i]),)
-    ##     k += 1
-        
-    ## plt.xlabel(r'Sparsity level $K$')
-    ## plt.ylabel(r'$\frac{Cu_{min}}{\Vert x\Vert_\infty}$', fontsize=20)
-    ## plt.figtext(1, 0, file_name.split('.')[0], fontsize=6,
-    ##             horizontalalignment='right')
-
     fn = save_fig(figs, file_name)
 
     #plt.show()
@@ -226,17 +199,6 @@ def experiment_3(file_name, args):
                      label='M=%d' % M[i])
 
         offset = offsets[k]
-        ## xy_ann = (K[offset], p_recovery[i,offset])
-        ## if i == 0:
-        ##     s = 'M=%d' % M[i]
-        ##     x_off = -60
-        ## else:
-        ##     s = M[i]
-        ##     x_off = -40
-        ## ax.annotate(s, xy=xy_ann,  xycoords='data',
-        ##             xytext=(x_off, -30), textcoords='offset points',
-        ##             arrowprops=dict(arrowstyle="->",
-        ##                             connectionstyle=s_u,))
         k += 1
     plt.legend()
     plt.xlabel(r'Sparsity level $K$')
@@ -676,10 +638,7 @@ if __name__ == '__main__':
     # Dictionary with 'key = file name of the PDF used in the latex document'
     # and 'value = file name of the corresponding mat file' (both without the 
     # file extension)
-    plot_list = {#'exp1_TPCC': 'experiment_1_20110719T201120',
-                 #'exp2_TPCC': 'experiment_2_20110718T115838',
-                 #'exp3_TPCC': 'experiment_3_20110718T093733',
-                 'exp1_TPCC': 'experiment_1_20111014T223757',
+    plot_list = {'exp1_TPCC': 'experiment_1_20111014T223757',
                  'exp2_TPCC': 'experiment_2_20111015T220756',
                  'exp3_TPCC': 'experiment_3_20111016T102024',
                  'supp_estimation': 'supp_estimation_20101217T132559',
@@ -687,7 +646,7 @@ if __name__ == '__main__':
                  'test_1_b': 'test_1_real_20101122T100157',
                  'test_8': 'test_8_20101221T090224'}
 
-    matfiles_dir = 'mat_files'
+    matfiles_dir = '../matlab'
     latex_dir = '../reports/figures/'
 
     parser = argparse.ArgumentParser(description='Generate PDF files with the '
